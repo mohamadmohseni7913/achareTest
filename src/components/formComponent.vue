@@ -1,4 +1,5 @@
 <template>
+
   <!--  main title -->
   <h2>ثبت آدرس</h2>
   <div class="main-Content-Form">
@@ -6,54 +7,49 @@
     <span class="main-Content-Form-Title"> لطفا مشخصات و آدرس خود را وارد کنید</span>
     <!-- label and  validat section -->
     <div class="main-Content-Form-Section">
-      <div class="main-Content-Form-Section-Label">
-        <span>نام </span>
-        <span v-if="errors.firstName" class="error">{{ errors.firstName }}</span>
-      </div>
-      <input type="text" v-model="formData.firstName" placeholder="مثال : محمد" />
+      <span>نام </span>
+      <input type="text" v-model="formData.firstName" :class="{ 'error-border': errors.firstName }" placeholder="مثال : محمد" />
+      <span v-if="errors.firstName" class="error">{{ errors.firstName }}</span>
+      <button v-if="formData.firstName" class="clear" @click="formData.firstName = ''"><i class="bi bi-x"></i> </button>
+
     </div>
     <div class="main-Content-Form-Section">
       <!-- label and  validat section -->
-      <div class="main-Content-Form-Section-Label">
-        <span>نام خانوادگی :</span>
-        <span v-if="errors.lastName" class="error">{{ errors.lastName }}</span>
-      </div>
-      <input type="text" v-model="formData.lastName" placeholder="مثال : محسنی" />
+      <span>نام خانوادگی :</span>
+      <input type="text" v-model="formData.lastName" :class="{ 'error-border': errors.lastName }" placeholder="مثال : محسنی" />
+      <span v-if="errors.lastName" class="error">{{ errors.lastName }}</span>
+      <button  v-if="formData.lastName" class="clear" @click="formData.lastName = ''"><i class="bi bi-x"></i> </button>
+
     </div>
     <div class="main-Content-Form-Section">
       <!-- label and  validat section -->
-      <div class="main-Content-Form-Section-Label">
-        <span>شماره تلفن همراه </span>
-        <span v-if="errors.phoneNumber" class="error">{{ errors.phoneNumber }}</span>
-      </div>
-      <input type="number" v-model="formData.phoneNumber" placeholder="093...." />
+      <span>شماره تلفن همراه </span>
+      <input type="number" v-model="formData.phoneNumber" :class="{ 'error-border': errors.phoneNumber }" placeholder="093...." />
+      <span v-if="errors.phoneNumber" class="error">{{ errors.phoneNumber }}</span>
+      <button v-if="formData.phoneNumber " class="clear" @click="formData.phoneNumber = ''"><i class="bi bi-x"></i> </button>
     </div>
     <div class="main-Content-Form-Section">
       <!-- label and  validat section -->
-      <div class="main-Content-Form-Section-Label">
-        <span>شماره تلفن ثابت(اختیاری) </span>
-        <span v-if="errors.phone" class="error">{{ errors.phone }}</span>
-      </div>
-      <input type="number" v-model="formData.phone" placeholder="093...." />
+      <span>شماره تلفن ثابت(اختیاری) </span>
+      <input type="number" v-model="formData.phone" :class="{ 'error-border': errors.phone }" placeholder="093...." />
+      <span v-if="errors.phone" class="error">{{ errors.phone }}</span>
+      <button  v-if="formData.phone " class="clear" @click="formData.phone = ''"><i class="bi bi-x"></i> </button>
+
+    </div>
+    <div class="main-Content-Form-Section">
+      <!-- label and  validat section -->
+      <span>آدرس </span>
+      <textarea name=""  v-model="formData.address" :class="{ 'error-border': errors.address }" id=""></textarea>
+      <span v-if="errors.address" class="error">{{ errors.address }}</span>
+      <button v-if="formData.address"  class="clear" @click="formData.address = ''"><i class="bi bi-x"></i> </button>
 
     </div>
     <div class="main-Content-Form-Section">
       <!-- label and  validat section -->
 
-      <div class="main-Content-Form-Section-Label">
-        <span>آدرس </span>
-        <span v-if="errors.address" class="error">{{ errors.address }}</span>
-      </div>
-      <textarea name="" v-model="formData.address" id=""></textarea>
-    </div>
-    <div class="main-Content-Form-Section">
-      <!-- label and  validat section -->
-
-      <div class="main-Content-Form-Section-Label">
-        <span>جنسیت </span>
-        <span v-if="errors.address" class="error">{{ errors.address }}</span>
-      </div>
-      <div class="main-Content-Form-Section-Label">
+      <span>جنسیت </span>
+      <div class="gender">
+        <div class="main-Content-Form-Section-Label">
         <input type="radio" id="male" value="male" v-model="formData.gender" />
         <label for="male">مرد</label>
       </div>
@@ -62,6 +58,10 @@
         <input type="radio" id="female" value="female" v-model="formData.gender" />
         <label for="female">زن</label>
       </div>
+      </div>
+      
+      <span v-if="errors.address" class="error">{{ errors.address }}</span>
+
     </div>
   </div>
   <div class="main-Content-Submit">
@@ -69,6 +69,7 @@
   </div>
 </template>
 <script>
+
 export default {
   name: 'FormComponent',
   props: {

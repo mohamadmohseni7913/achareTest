@@ -32,8 +32,10 @@
             margin: 10px 0;
             color: rgb(131, 124, 124);
         }
+
         @include fullSpace;
         padding: 10px;
+
         &-Form {
             display: flex;
             flex-direction: column;
@@ -41,25 +43,44 @@
             background-color: white;
             padding: 20px;
             border-radius: 10px;
-           
-            h2{
+            
+            h2 {
                 color: rgb(131, 124, 124);
 
             }
+
             &-Section {
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
-                &-Label{
+                position: relative;
+
+                &-Label {
                     @include center;
                     justify-content: flex-start;
+                    gap: 10px;
                 }
+
                 textarea {
                     height: 150px
                 }
+                .clear{
+                    position: absolute;
+                    // padding: 10px;
+                    border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
+                    bottom: 10px;
+                    left: 10px;
+                }
+                .gender{
+                    display: flex;
+                    gap: 20px;
+                }
             }
         }
-        &-Submit{
+
+        &-Submit {
             @include center;
             position: fixed;
             background-color: white;
@@ -68,17 +89,33 @@
             right: 0;
             bottom: 0;
             padding: 15px;
-            button{
+
+            button {
                 background-color: $active-color;
                 color: white;
                 width: 90%;
                 font-weight: bold;
             }
         }
-        &-Addresses{
+
+        &-Addresses {
             display: flex;
             flex-direction: column;
             gap: 10px;
+
+            &-Section {
+                display: flex;
+            flex-direction: column;
+            gap: 15px;
+            @media (min-width:976px) {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+             
+            }
         }
     }
 }

@@ -1,17 +1,6 @@
 <script setup>
-import GetAllAddresses from './api/user/addresses/getAllAddresses';
-import AddressCard from './components/addressCard.vue';
-import FakeData from './fakeData';
 import CreateAddressContainer from './components/createAddressContainer.vue';
-// call and get user addresses
-// cause i have got CORS error , i could not try  both api , then i wrote  what i think right
-// and this is my first time to create vue app 
-let data;
-async function callAddress() {
-  data = await GetAllAddresses()
-}
-callAddress()
-
+import AddressesContainer from './layout/addressesContainer.vue';
 </script>
 <template>
   <main>
@@ -29,19 +18,11 @@ callAddress()
       </div>
       <div class="main-Content">
         <div v-show="currentTab === 0">
-          <!-- <MapComponent />   -->
-          <div class="main-Content-Addresses">
-            <h2>آدرس ها و مشخصات</h2>
-            <div v-for="(item, index) in FakeData" :key="index">
-              <AddressCard :address="item.address" :firstName="item.first_name" :lastName="item.last_name"
-                :gender="item.gender" :phone="item.coordinate_mobile" :mobile="item.coordinate_phone_number" />
-            </div>
-
-          </div>
+          <AddressesContainer />
         </div>
         <div class="map-Container" v-show="currentTab === 1">
           <CreateAddressContainer />
-        </div>       
+        </div>
       </div>
     </div>
   </main>
