@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    direction: rtl;
+}
+
+$bg-color: #eaeaea;
+$active-color: #2ebba6;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.map-Container {
+    width: 100%;
+    height: 100%;
+
+}
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin fullSpace {
+    width: 100%;
+    height: 100%;
+}
+
+input,
+textarea {
+    height: 46px;
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+    padding: 0 10px;
+
+    &:focus {
+        border-color: $active-color ;
+        outline: $active-color;
+    }
+
+    &:hover {
+        border-color: $active-color ;
+    }
+}
+
+textarea {
+    resize: none;
+    padding: 10px;
+}
+
+button {
+    height: 46px;
+    border-radius: 5px;
+    border: none;
+}
+
+.address-Card {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &-Section {
+       @include center;
+       justify-content: space-between;
+       font-size: 20px; 
+       span{
+        &:first-child{
+            color: gray;
+        }
+       }
+    }
+    &-Main-Address{
+       font-size: 20px; 
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid rgb(238, 231, 231);
+        gap: 20px;
+        padding: 10px 0;
+       span{
+        color: gray;
+       } 
+    }
+}
+.error{
+    font-size: 12px;
+    color: red;
+    // background-color: rgb(235, 80, 80);
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 5px;
+}
