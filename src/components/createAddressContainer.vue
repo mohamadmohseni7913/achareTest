@@ -23,7 +23,8 @@ function setCurrentTab(tab) {
             lng:geo.lng
         }
          let response = await CreateAddressApi(data)
-        console.log('fffff',response);
+        console.log('data',data);
+        console.log('response',response);
         
 }
 // form validator and check tabstatus

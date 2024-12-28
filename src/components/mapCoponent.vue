@@ -23,14 +23,27 @@ import nmp_mapboxgl from '@neshan-maps-platform/mapbox-gl';
 const geoData = ref({}); // Make geoData reactive
 
 const mapSetter = map => {
+  let marker = null;
+
   map.on('click', (e) => {
     const geo = e.lngLat;
     console.log('Clicked at', geo);
     geoData.value = { lng: geo.lng, lat: geo.lat };
-    new nmp_mapboxgl.Marker({ color: 'blue' })
-      .setLngLat(geo)
-      .addTo(map);
-  });
+    if (marker) {
+      marker.remove()
+    }
+    marker = new nmp_mapboxgl.Marker({ color: "#FF0000" }).setLngLat([e.lngLat.lng, e.lngLat.lat]).setPopup(
+      new nmp_mapboxgl.Popup({ offset: 40 })
+    ).addTo(map)
+  })
+  // map.on('click', (e) => {
+  //   const geo = e.lngLat;
+  //   console.log('Clicked at', geo);
+  //   geoData.value = { lng: geo.lng, lat: geo.lat };
+  //   new nmp_mapboxgl.Marker({ color: 'blue' })
+  //     .setLngLat(geo)
+  //     .addTo(map);
+  // });
 
   // map.addControl(new nmp_mapboxgl.NavigationControl());
 };
